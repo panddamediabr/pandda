@@ -4,8 +4,9 @@
 const SUPABASE_URL = 'https://ptpdlrlcpdxddqrjpuac.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_diYrzfwlDGIAtfRKfHPwIA_X_rwRLjT';
 
-// Inicializa o cliente
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// CORREÇÃO: Mudamos o nome da variável para 'client' para não dar conflito
+// A biblioteca global continua se chamando 'supabase'
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ============================================
 // 2. CONTROLE DO FORMULÁRIO (ETAPAS)
@@ -25,8 +26,6 @@ if(btnIniciar) {
         stepApps.classList.remove('hidden');
         stepApps.classList.add('fade-in');
     });
-} else {
-    console.error("Erro: Botão 'btn-iniciar-teste' não encontrado no HTML.");
 }
 
 // Transição: Apps -> Formulário
@@ -102,8 +101,8 @@ if(form) {
             // Validações
             if (whatsRaw.length < 10) throw new Error("WhatsApp incompleto.");
 
-            // Envia para tabela 'solicitacoes_teste'
-            const { error } = await supabase
+            // CORREÇÃO: Usamos 'client' aqui em vez de 'supabase'
+            const { error } = await client
                 .from('solicitacoes_teste')
                 .insert([
                     {
