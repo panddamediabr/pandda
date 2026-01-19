@@ -4,8 +4,7 @@
 const SUPABASE_URL = 'https://ptpdlrlcpdxddqrjpuac.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_diYrzfwlDGIAtfRKfHPwIA_X_rwRLjT';
 
-// CORREÇÃO: Mudamos o nome da variável para 'client' para não dar conflito
-// A biblioteca global continua se chamando 'supabase'
+// Cliente renomeado para evitar conflito com a biblioteca global
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ============================================
@@ -20,7 +19,6 @@ const btnJaInstalei = document.getElementById('btn-ja-instalei');
 
 // Se o script carregou, testamos o botão
 if(btnIniciar) {
-    // Transição: Início -> Apps
     btnIniciar.addEventListener('click', () => {
         stepStart.classList.add('hidden');
         stepApps.classList.remove('hidden');
@@ -28,7 +26,6 @@ if(btnIniciar) {
     });
 }
 
-// Transição: Apps -> Formulário
 if(btnJaInstalei) {
     btnJaInstalei.addEventListener('click', () => {
         stepApps.classList.add('hidden');
@@ -83,7 +80,7 @@ if(form) {
         const whatsRaw = document.getElementById('whatsapp').value.replace(/\D/g, '');
         const horario = document.getElementById('horario').value;
         
-        // Captura e trata o Cupom (Maiúsculo e sem espaços)
+        // Captura e trata o Cupom
         const cupomElem = document.getElementById('cupom');
         const cupomRaw = cupomElem ? cupomElem.value.trim().toUpperCase() : "";
         const cupomFinal = cupomRaw === "" ? null : cupomRaw;
@@ -101,7 +98,7 @@ if(form) {
             // Validações
             if (whatsRaw.length < 10) throw new Error("WhatsApp incompleto.");
 
-            // CORREÇÃO: Usamos 'client' aqui em vez de 'supabase'
+            // CORREÇÃO AQUI: mudamos 'cupom_usado' para 'codigo_usado'
             const { error } = await client
                 .from('solicitacoes_teste')
                 .insert([
@@ -109,7 +106,7 @@ if(form) {
                         nome: nomeFinal,
                         whatsapp: fullWhatsapp,
                         email: email,
-                        cupom_usado: cupomFinal
+                        codigo_usado: cupomFinal // <--- O nome correto da coluna no banco
                     }
                 ]);
 
@@ -126,7 +123,13 @@ if(form) {
 
         } catch (err) {
             console.error(err);
-            showToast('error', 'Erro ao enviar. Tente novamente.');
+            // Mensagem de erro mais amigável se for problema de cupom inválido
+            if(err.code === '23503') { // Erro de Chave Estrangeira (Cupom não existe)
+                 showToast('error', 'Erro: O código de indicação não existe.');
+            } else {
+                 showToast('error', 'Erro ao enviar. Tente novamente.');
+            }
+            
             btnText.textContent = originalText;
             btnSubmit.disabled = false;
             btnSubmit.style.opacity = '1';
@@ -134,7 +137,6 @@ if(form) {
     });
 }
 
-// Função Toast
 function showToast(type, message) {
     if(toast) {
         toast.textContent = message;
