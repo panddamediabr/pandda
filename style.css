@@ -1,0 +1,180 @@
+/* Definições de Variáveis (Exclusivas deste arquivo) */
+:root {
+  --pandda-green: #00E676; /* Verde Neon da Marca */
+  --bg-dark: #0a0a0a;      /* Fundo Principal */
+  --bg-card: #1a1a1a;      /* Fundo dos Cards */
+  --text-main: #ffffff;
+  --text-muted: #a0a0a0;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius: 8px;
+}
+
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Hero Section (Topo) */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at center, #1a2a3a 0%, #0a0a0a 100%);
+  min-height: 80vh; /* Ocupa boa parte da tela */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text-main);
+  letter-spacing: -2px;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* Card do Formulário */
+.test-form-container {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid #333;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.test-form-container h3 {
+  margin-bottom: 5px;
+  color: var(--pandda-green);
+}
+
+.form-subtitle {
+  font-size: 0.9rem !important;
+  margin-bottom: 25px !important;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: var(--radius);
+  color: white;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--pandda-green);
+  background: #2a2a2a;
+}
+
+/* Botão Principal */
+.btn-cta {
+  width: 100%;
+  padding: 15px;
+  background: var(--pandda-green);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-transform: uppercase;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-cta:hover {
+  transform: scale(1.02);
+  background: #00c766;
+}
+
+.btn-cta:disabled {
+  background: #444;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Diferenciais */
+.features {
+  padding: 80px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  background-color: #0f0f0f;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--radius);
+  width: 300px;
+  text-align: center;
+  border-top: 2px solid var(--pandda-green);
+}
+
+.feature-card h4 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Preço */
+.pricing {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--bg-dark);
+  border-top: 1px solid #222;
+}
+
+.pricing h2 { margin-bottom: 20px; }
+
+.price-tag {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--pandda-green);
+  margin: 10px 0;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.5rem; }
+  .test-form-container { padding: 20px; }
+}

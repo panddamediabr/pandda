@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pandda | Streaming Premium</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Pandda</h1>
+    
+    <p>
+      O futuro do seu entretenimento chegou. Com a exclusiva tecnologia <strong>DualApp</strong>, 
+      o Pandda oferece redundância automática e estabilidade máxima para você assistir ao que gosta sem interrupções.
+    </p>
+
+    <div class="test-form-container">
+      <h3>Começar Agora</h3>
+      <p class="form-subtitle">
+        Solicite seu acesso e descubra a qualidade Pandda.
+      </p>
+
+      <form id="formTeste">
+        <div class="form-group">
+          <label>Seu Nome</label>
+          <input type="text" id="nome" placeholder="Ex: João Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp (com DDD)</label>
+          <input type="tel" id="whatsapp" placeholder="Ex: 11999998888" required>
+        </div>
+
+        <div class="form-group">
+          <label>Código de Indicação (Opcional)</label>
+          <input type="text" id="cupom" placeholder="Ex: JOAO10">
+        </div>
+
+        <button type="submit" class="btn-cta" id="btnSubmit">
+          SOLICITAR ACESSO
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h4>⚡ Infraestrutura DualApp</h4>
+      <p>Redundância inteligente. O Pandda monitora a rota do seu sinal e ativa rotas secundárias automaticamente para garantir a conexão.</p>
+    </div>
+    <div class="feature-card">
+      <h4>📱 Liberdade Total</h4>
+      <p>Assista na sua Smart TV, TV Box, Smartphone ou Computador. O Pandda vai onde você estiver.</p>
+    </div>
+    <div class="feature-card">
+      <h4>💎 Qualidade Cinema</h4>
+      <p>Servidores de alta performance preparados para entregar a melhor definição de imagem e som do mercado.</p>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Assinatura Pandda</h2>
+    <div class="price-tag">R$ 34,90</div>
+    <p>Tudo incluso. Sem fidelidade.</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
