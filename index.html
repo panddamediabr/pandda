@@ -187,6 +187,152 @@
                         <label>Código de Indicação (Opcional)</label>
                         <div class="input-wrapper">
                             <i class="ph ph-ticket input-icon"></i>
-                            <input type="text" id="cupom" placeholder="Ex: JOAO10 ou MEGA48">
+                            <input type="text" id="cupom" placeholder="Ex: JOAO10">
                         </div>
                     </div>
+
+                    <div class="input-group">
+                        <label>Horário do Teste</label>
+                        <div class="input-wrapper">
+                            <i class="ph ph-clock input-icon"></i>
+                            <select id="horario" required>
+                                <option value="agora">Começar Agora</option>
+                                <option value="18:00">Agendar para as 18:00</option>
+                                <option value="20:00">Agendar para as 20:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary full-width">
+                        <span id="btn-text">Gerar Acesso DualAPP</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="plano" class="pricing-section">
+        <div class="premium-offer-container">
+            
+            <div class="offer-left">
+                <span class="offer-tag">Plano DualAPP Completo</span>
+                
+                <div class="offer-price">
+                    <span class="currency">R$</span>
+                    <span class="amount">34</span>
+                    <span class="currency">,90</span>
+                    <div class="term">pagamento mensal</div>
+                </div>
+
+                <button class="btn-primary full-width big-btn" onclick="alert('Integração com Checkout em breve')">
+                    <i class="ph-bold ph-lightning"></i> Assinar Agora
+                </button>
+
+                <div class="payment-methods">
+                    <div class="method"><i class="ph-fill ph-pix-logo"></i></div>
+                    <div class="method"><i class="ph-fill ph-credit-card"></i></div>
+                    <span class="secure-checkout-text"><i class="ph-fill ph-lock-key"></i> Compra Segura</span>
+                </div>
+            </div>
+
+            <div class="offer-right">
+                <h3>Vasto Conteúdo.<br>Qualidade Superior.</h3>
+                <p>Uma assinatura, máxima compatibilidade. Ideal para quem preza por imagem limpa e sinal estável.</p>
+
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-arrows-split"></i></div>
+                        <div class="spec-info">
+                            <h4>2 Rotas de Sinal</h4>
+                            <span>Sistema Anti-Falhas DualAPP</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-film-strip"></i></div>
+                        <div class="spec-info">
+                            <h4>Baixa Compressão</h4>
+                            <span>Qualidade de imagem superior</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-monitor-play"></i></div>
+                        <div class="spec-info">
+                            <h4>1 Tela Inclusa</h4>
+                            <span>Uso único (não simultâneo)</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-plus-circle"></i></div>
+                        <div class="spec-info">
+                            <h4>Pontos Adicionais</h4>
+                            <span>Opção de até +2 telas</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-clock-counter-clockwise"></i></div>
+                        <div class="spec-info">
+                            <h4>Playback 7 Dias</h4>
+                            <span>Assista o que perdeu</span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="ph-fill ph-headset"></i></div>
+                        <div class="spec-info">
+                            <h4>Suporte Real</h4>
+                            <span>Atendimento via WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="ph-fill ph-television-simple"></i> Pandda<span>.</span>
+                </div>
+                <p>Entretenimento inteligente com redundância de sinal. A melhor escolha para sua família.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn"><i class="ph-logo ph-instagram-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph-logo ph-whatsapp-logo"></i></a>
+                    <a href="#" class="social-btn"><i class="ph-logo ph-telegram-logo"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Links Úteis</h4>
+                <ul class="footer-links">
+                    <li><a href="#teste-gratis">Solicitar Teste</a></li>
+                    <li><a href="#plano">Planos</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Suporte</h4>
+                <ul class="contact-list">
+                    <li><i class="ph ph-whatsapp-logo"></i> (11) 99999-9999</li>
+                    <li><i class="ph ph-envelope-simple"></i> suporte@pandda.tv</li>
+                    <li><i class="ph ph-clock"></i> Seg a Sex: 09h às 18h</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2026 Pandda Streaming. Todos os direitos reservados.
+            </div>
+            <div class="security-badges">
+                <div class="badge-item"><i class="ph-fill ph-lock-key"></i> SSL Seguro</div>
+                <div class="badge-item"><i class="ph-fill ph-shield-check"></i> Proteção DDOS</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
