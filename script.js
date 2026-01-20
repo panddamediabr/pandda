@@ -1,9 +1,9 @@
 // ============================================
 // 1. CONFIGURAÇÃO DO SUPABASE
 // ============================================
-// Substitua pelas suas chaves reais do painel
+// Substitua pelas suas chaves reais do painel Supabase
 const SUPABASE_URL = 'https://ptpdlrlcpdxddqrjpuac.supabase.co';
-const SUPABASE_KEY = 'sbp_...'; // Use a chave "anon" (public) aqui
+const SUPABASE_KEY = 'SUA_CHAVE_AQUI_AQUELA_QUE_COMECA_COM_sbp_OU_eyJ'; 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ============================================
@@ -48,7 +48,7 @@ if(whatsappInput) {
 }
 
 // ============================================
-// 4. ENVIO DO FORMULÁRIO (TESTE)
+// 4. ENVIO DO FORMULÁRIO DE TESTE
 // ============================================
 const form = document.getElementById('formTeste');
 const toast = document.getElementById('toast');
@@ -96,7 +96,7 @@ if(form) {
                     nome: nomeFinal,
                     whatsapp: fullWhatsapp,
                     email: email,
-                    codigo_usado: cupomFinal // Agora envia null se estiver vazio
+                    codigo_usado: cupomFinal
                 }]);
 
             if (error) throw error;
@@ -116,6 +116,71 @@ if(form) {
             btnText.textContent = originalText;
             btnSubmit.disabled = false;
             btnSubmit.style.opacity = '1';
+        }
+    });
+}
+
+// ============================================
+// 5. CHECKOUT INTELIGENTE (NOVO)
+// ============================================
+const btnComprar = document.getElementById('btn-comprar');
+
+if (btnComprar) {
+    btnComprar.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        // 1. Tenta pegar o email do formulário de teste (se o cliente já preencheu)
+        // Isso é inteligente: se ele já digitou lá em cima, não perguntamos de novo.
+        let emailUsuario = "";
+        let nomeUsuario = "Cliente Novo";
+        
+        const inputEmail = document.getElementById('email');
+        const inputNome = document.getElementById('nome');
+
+        if (inputEmail && inputEmail.value) emailUsuario = inputEmail.value;
+        if (inputNome && inputNome.value) nomeUsuario = inputNome.value;
+
+        // 2. Se estiver vazio, pede pro usuário agora
+        if (!emailUsuario) {
+            emailUsuario = prompt("Para gerar seu acesso, precisamos do seu E-mail:");
+            if (!emailUsuario) return; // Se ele cancelar, para tudo.
+        }
+
+        // Efeito visual (Carregando...)
+        const originalHTML = btnComprar.innerHTML;
+        btnComprar.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Gerando Cobrança...';
+        btnComprar.disabled = true;
+        btnComprar.style.opacity = "0.7";
+
+        try {
+            // 3. Chama o Robô Gerador de Links
+            const response = await fetch('https://ptpdlrlcpdxddqrjpuac.supabase.co/functions/v1/mp-checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: emailUsuario,
+                    nome: nomeUsuario
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.url) {
+                // 4. Redireciona para o Mercado Pago
+                window.location.href = data.url;
+            } else {
+                alert('Ocorreu um erro ao gerar o link. Tente novamente.');
+                console.error(data);
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert('Erro de conexão. Verifique sua internet.');
+        } finally {
+            // Restaura o botão ao normal
+            btnComprar.innerHTML = originalHTML;
+            btnComprar.disabled = false;
+            btnComprar.style.opacity = "1";
         }
     });
 }
